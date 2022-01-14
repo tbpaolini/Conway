@@ -194,7 +194,7 @@ int WinMain(int argc, char* argv[])
 
         // Sleep for the remaining of the frame
         total = ((SDL_GetPerformanceCounter() - start) / frequency) * (Uint64)1000000;
-        sleep_time = total < FRAME ? FRAME - total : 0;  // Do not sleep if the total time is longer than the frame
+        sleep_time = total < FRAME ? FRAME - total : (Uint64)0;  // Do not sleep if the total time is longer than the frame
         usleep(sleep_time);
     }
     
