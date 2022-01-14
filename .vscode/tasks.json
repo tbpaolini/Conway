@@ -2,7 +2,7 @@
     "tasks": [
         {
             "type": "cppbuild",
-            "label": "C/C++: gcc.exe arquivo de build ativo",
+            "label": "C/C++: gcc.exe SDL",
             "command": "C:\\msys64\\mingw64\\bin\\gcc.exe",
             "args": [
                 "-fdiagnostics-color=always",
@@ -23,7 +23,31 @@
                 "kind": "build",
                 "isDefault": true
             },
-            "detail": "Tarefa gerada pelo Depurador."
+            "detail": "Build to run on a graphical window (with SDL)."
+        },
+        
+        {
+            "type": "cppbuild",
+            "label": "C/C++: gcc.exe Terminal",
+            "command": "C:\\msys64\\mingw64\\bin\\gcc.exe",
+            "args": [
+                "-fdiagnostics-color=always",
+                "-g",
+                "${file}",
+                "-o",
+                "${fileDirname}\\bin\\${fileBasenameNoExtension}.exe"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "Build to run on terminal"
         }
     ],
     "version": "2.0.0"
