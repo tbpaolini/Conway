@@ -48,6 +48,7 @@ void draw_cell(int x, int y, SDL_Renderer* renderer)
 int usleep();         // Prevents the compiler to warn that the function has an implicit declaration
 Uint64 start, total;  // Start and end of the timing
 Uint64 frequency;     // Ticks per unit of time
+Uint64 sleep_time;    // Time (in microseconds) to wait before the next frame
 
 // Frame rate
 #define FPS 15
@@ -193,7 +194,8 @@ int WinMain(int argc, char* argv[])
 
         // Sleep for the remaining of the frame
         total = ((SDL_GetPerformanceCounter() - start) / frequency) * (Uint64)1000000;
-        usleep(FRAME - total);
+        sleep_time = total < FRAME ? FRAME - total : 0;  // Do not sleep if the total time is longer than the frame
+        usleep(sleep_time);
     }
     
     // When the user is closing the program
